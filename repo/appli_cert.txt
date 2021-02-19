@@ -1,0 +1,8 @@
+SELECT  emp_site, count(id) FROM mapp_prod.[planning-resources].users WHERE emp_num LIKE '62%' GROUP BY emp_site;
+
+SELECT  users.emp_name, users.emp_num, txn_req.id, txn_req.emp_team, users.emp_site FROM mapp_prod.[planning-resources].txn_req INNER JOIN mapp_prod.[planning-resources].users ON txn_req.emp_num = users.emp_num 
+WHERE txn_req.emp_num LIKE '62%' AND users.f_flag = 1;
+
+
+SELECT TOP 200  users.emp_name, users.emp_num, txn_req.id, txn_req.emp_team, users.emp_site, txn_req.request_on FROM mapp_prod.[planning-resources].txn_req INNER JOIN mapp_prod.[planning-resources].users ON txn_req.emp_num = users.emp_num 
+WHERE  users.f_flag = 1  ORDER BY txn_req.request_on desc ;
